@@ -210,13 +210,51 @@
 .wrap-header-main {
   display: flex;
 }
+
+
+
 .logo, .user-search {
   width: 20%;
   height: 100px;
   background-color: green;
+  display: flex;
+  align-items: center;
 }
 .menu {
   width: 60%;
   height: 100px;
   background-color: blue;
 }
+
+/* Box-search: C1 */
+/* .box-search {
+  background-color: #fff;
+  border-radius: 22px;
+  width: 207px;
+}
+.box-search input {
+  border: none;
+} */
+
+
+/* Box-search: C2 */
+.box-search {
+  position: relative;
+}
+.box-search input {
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0 25px 0 30px; /* Top - Right - Bottom - Left */
+  outline: none;
+}
+.box-search i {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  font-size: 20px;
+}
+
+/*  */
