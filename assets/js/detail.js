@@ -89,74 +89,26 @@ let data = [
   },
 ];
 
-//Chuc nang 1: Truy cap phan tu
-let btnListing = document.querySelectorAll('.btn-listing');
-let tabContent = document.querySelectorAll('.tab-content');
 
-// Tab listing Product
-const listingProduct = (btn, tab) => {
-  btn.forEach((button, index) => {
+// Get id product in listing
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
 
-    button.addEventListener('click', () => {
-      // Remove active old
-      btn.forEach((item) => {
-        item.classList.remove('active');
-      })
-      tab.forEach((value) => {
-        value.classList.remove('active');
-      })
-      // Add active new with click button
-      button.classList.add('active');
-      tabContent[index].classList.add('active');
-    });
-
-  })
-
+// Filter Product with id
+let productDetail = (listData, idProduct) => {
+  return listData.filter((value)=> value.id == idProduct);
 }
-listingProduct(btnListing, tabContent);
 
-//Chuc nang 2:  Truy cap phan tu
-let rowTt = document.querySelector('.row-js-tt');
-let rowTs = document.querySelector('.row-js-ts');
-let rowDt = document.querySelector('.row-js-dt');
+let detail = productDetail(data, id);
+console.log(detail);
 
-//Get data with category
-const getDataCategory = (list, cat) => {
-  // return list.filter((item) => {
-  //   return item.category === cat;
-  // });
-  return list.filter(item => item.category === cat);
-}
-const listDataTt = getDataCategory(data, "Thời trang");
-const listDataTs = getDataCategory(data, "Trang sức");
-const listDataDt = getDataCategory(data, "Điện tử");
+// Truy cap phan tu
+let contentDetail = document.querySelector(".content-detail");
 
-// Render Data to HTML
-const renderProject = (listData) => {
-  let HTML = ``;
-  listData.forEach((item)=>{
-    // console.log(item);
-    HTML = HTML + `
-    <div class="col-12 col-sm-6 col-md-3">
-      <a href="/detail.html?id=${item.id}" target="_blank">
-        <div class="content">
-          ${item.title}
-        </div>
-      </a> 
-    </div>
-    `;
-  });
+// Hien thi du lieu
+let HTML = 
+  `
+    <h1>${detail[0].title}</h1>
+  `;
 
-  return HTML;
-
-}
-rowTt.innerHTML =  renderProject(listDataTt);
-rowTs.innerHTML =  renderProject(listDataTs);
-rowDt.innerHTML =  renderProject(listDataDt);
-
-
-/*
-
-  /detail.html?id=1
-
-*/
+  contentDetail.innerHTML = HTML;
