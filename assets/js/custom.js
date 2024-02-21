@@ -1,3 +1,14 @@
+// Menu Mobile
+let menuMobile = document.querySelector('.mobile-menu');
+let body = document.querySelector('body');
+
+menuMobile.addEventListener("click", ()=>{
+  menuMobile.classList.toggle("change");
+  body.classList.toggle("change-menu");
+
+})
+
+
 let data = [
   {
     "id": 1,
@@ -160,3 +171,17 @@ rowDt.innerHTML =  renderProject(listDataDt);
   /detail.html?id=1
 
 */
+
+
+
+// Cach call 1 API
+let API = `https://jsonplaceholder.typicode.com/posts`;
+
+const getAPI = async() => {
+
+  let response = await axios.get(API);
+  console.log(response.data);
+
+}
+
+getAPI();
